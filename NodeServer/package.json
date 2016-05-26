@@ -1,0 +1,13 @@
+{
+  "name": "NodeServer",
+  "version": "0.0.0",
+  "description": "NodeServer",
+  "main": "app.js",
+  "author": {
+    "name": "EBERSOLD",
+    "email": ""
+  },
+  "dependencies": {
+    "express": "^4.13.4"    
+  }
+}

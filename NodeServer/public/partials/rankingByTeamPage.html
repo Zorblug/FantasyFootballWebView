@@ -1,0 +1,29 @@
+﻿<div class="panel panel-primary">
+    <div class="panel-heading"><h2 class="panel-title" pe-translate="rankingByTeam.title">Classement par equipes</h2></div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th pe-translate="rankingByTeam.index">#</th>
+                        <th pe-translate="rankingByTeam.team">equipe</th>
+                        <th pe-translate="rankingByTeam.points">points</th>
+                        <th pe-translate="rankingByTeam.tdFor">td</th>
+                        <th pe-translate="rankingByTeam.tdAgainst">td encaissés</th>
+                        <th pe-translate="rankingByTeam.casFor">sorties</th>
+                        <th pe-translate="rankingByTeam.casAgainst">sorties contres</th>
+                    </tr>
+                </thead>
+                <tr ng-repeat="item in rankings">
+                    <td>{{$index + 1}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.coachTeamPoints}}</td>
+                    <td>{{item.tdFor}}</td>
+                    <td>{{item.tdAgainst}}</td>
+                    <td>{{item.casFor}}</td>
+                    <td>{{item.casAgainst}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

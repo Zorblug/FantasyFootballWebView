@@ -1,0 +1,57 @@
+﻿<div class="panel panel-primary">
+    <div class="panel-heading"><h2 class="panel-title">{{title | peTranslate}}</h2></div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <!--<table class="table table-striped" at-table at-list="rankings" at-paginated at-config="config">
+                <thead>
+                    <tr>
+                        <th at-attribute="index" pe-translate="rankingByCoach.index">index</th>
+                        <th at-attribute="coach" pe-translate="rankingByCoach.coach">coach</th>
+                        <th at-attribute="td" pe-translate="rankingByCoach.td">td</th>
+                        <th at-attribute="points" pe-translate="rankingByCoach.points">points</th>
+                        <th at-attribute="opponentsPoints" pe-translate="rankingByCoach.oppoints">op points</th>
+                        <th at-attribute="netTd" pe-translate="rankingByCoach.nettd">net TD</th>
+                        <th at-attribute="casualties" pe-translate="rankingByCoach.casualities">sorties</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td at-implicit at-attribute="index"></td>
+                        <td at-implicit at-attribute="coach"></td>
+                        <td at-implicit at-attribute="td"></td>
+                        <td at-implicit at-attribute="points"></td>
+                        <td at-implicit at-attribute="opponentsPoints"></td>
+                        <td at-implicit at-attribute="netTd"></td>
+                        <td at-implicit at-attribute="casualties"></td>
+                    </tr>
+                </tbody>
+            </table>-->
+            <!--<at-pagination at-list="rankings" at-config="config"></at-pagination>-->
+
+            <table class="table table-striped" ng-table="config">
+                <thead>
+                    <tr>
+                        <th pe-translate="rankingByCoach.index">index</th>
+                        <th pe-translate="rankingByCoach.coach">coach</th>
+                        <th pe-translate="rankingByCoach.td">td</th>
+                        <th pe-translate="rankingByCoach.points">points</th>
+                        <th pe-translate="rankingByCoach.oppoints">op points</th>
+                        <th pe-translate="rankingByCoach.nettd">net TD</th>
+                        <th pe-translate="rankingByCoach.casualities">sorties</th>
+                        <th pe-translate="rankingByCoach.detail">détaille</th>
+                    </tr>
+                </thead>
+                <tr ng-repeat="item in rankings">
+                    <td>{{$index + 1}}</td>
+                    <td><a ng-click="showCoach(item.id);" class="clickable">{{item.coach}}</a></td>
+                    <td>{{item.td}}</td>
+                    <td>{{item.points}}</td>
+                    <td>{{item.opponentsPoints}}</td>
+                    <td>{{item.netTd}}</td>
+                    <td>{{item.casualties}}</td>
+                    <td><a ng-click="viewMatchsDetailByCoach(item.id);" class="clickable"><span class="glyphicon glyphicon-info-sign"></span></a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

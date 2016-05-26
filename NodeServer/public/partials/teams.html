@@ -1,0 +1,42 @@
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-xs-6">
+                <h2 class="panel-title" pe-translate="teams.title">EQUIPES</h2></div>
+            <div class="col-xs-6 text-right"><span class="badge">{{numberOfTeams}}</span></div>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-fixed" fixed-header>
+            <thead>
+                <tr>
+                    <th><a ng-click="orderByField='name'; reverseSort = !reverseSort;"><span pe-translate="teams.name">nom</span>&nbsp;<span class="glyphicon" ng-show="orderByField=='name'" ng-class="{'glyphicon-arrow-down': reverseSort==true, 'glyphicon-arrow-up': reverseSort==false}"></span></a></th>
+                    <th width="50%"><span pe-translate="teams.coachs">COACHS</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="(key, value) in teamsList  | orderObjectBy : orderByField : reverseSort ">
+                    <td ng-click="showTeam(value.id);" class="clickable"><a>{{value.name}}</a></td>
+                    <td>
+                        <a class="btn btn-primary btn-xs" data-toggle="collapse" data-target="#collapseExample{{$index}}" aria-expanded="false" aria-controls="collapseExample{{$index}}" pe-translate="teams.coachs.button">
+                            Liste des coachs
+                        </a>
+                        <div class="collapse" id="collapseExample{{$index}}">
+                            <div class=" list-group">
+                                <a class="list-group-item clickable" ng-repeat="item in value.coachTeamMates | orderBy : coach " ng-click="showCoach(item.teamId);"><span class="badge" pe-translate-title="teams.points" title="Nombre de points">{{item.points}}</span>{{item.coach}}</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">
+                        <span class="badge">{{numberOfTeams}}</span>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

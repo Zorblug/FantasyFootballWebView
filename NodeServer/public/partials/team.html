@@ -1,0 +1,52 @@
+﻿<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2 class="panel-title"><span pe-translate="team.title">EQUPE :</span>&nbsp;<strong>{{team.name}}</strong></h2>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th><a ng-click="orderByField='coach'; reverseSort = !reverseSort;"><span pe-translate="team.coach">Coach</span>&nbsp;<span class="glyphicon" ng-show="orderByField=='coach'" ng-class="{'glyphicon-arrow-down': reverseSort==true, 'glyphicon-arrow-up': reverseSort==false}"></span></a></th>
+                        <th><a ng-click="orderByField='points'; reverseSort = !reverseSort;"><span pe-translate="team.points">Points</span>&nbsp;<span class="glyphicon" ng-show="orderByField=='points'" ng-class="{'glyphicon-arrow-down': reverseSort==true, 'glyphicon-arrow-up': reverseSort==false}"></span></a></th>
+                        <th><a ng-click="orderByField='opponentsPoints'; reverseSort = !reverseSort;"><span pe-translate="team.oppoints">Opponents points</span>&nbsp;<span class="glyphicon" ng-show="orderByField=='opponentsPoints'" ng-class="{'glyphicon-arrow-down': reverseSort==true, 'glyphicon-arrow-up': reverseSort==false}"></span></a></th>
+                        <th><a ng-click="orderByField='netTd'; reverseSort = !reverseSort;"><span pe-translate="team.nettd">net TD</span>&nbsp;<span class="glyphicon" ng-show="orderByField=='netTd'" ng-class="{'glyphicon-arrow-down': reverseSort==true, 'glyphicon-arrow-up': reverseSort==false}"></span></a></th>
+                        <th><a ng-click="orderByField='casualties'; reverseSort = !reverseSort;"><span pe-translate="team.casualties">Casualities</span>&nbsp;<span class="glyphicon" ng-show="orderByField=='casualties'" ng-class="{'glyphicon-arrow-down': reverseSort==true, 'glyphicon-arrow-up': reverseSort==false}"></span></a></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in team.coachTeamMates | orderBy : orderByField : reverseSort ">
+                        <td><a ng-click="showCoach(item.teamId)" class="clickable"><strong>{{item.coach}}</strong></a></td>
+                        <td>{{item.points}}</td>
+                        <td>{{item.opponentsPoints}}</td>
+                        <td>{{item.netTd}}</td>
+                        <td>{{item.casualties}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th pe-translate="team.points">points</th>
+                        <th pe-translate="team.oppoints">op points</th>
+                        <th pe-translate="team.nettd">net TD</th>
+                        <th pe-translate="team.casualties">casualities</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{team.points}}</td>
+                        <td>{{team.opponentsPoints}}</td>
+                        <td>{{team.netTd}}</td>
+                        <td>{{team.casualties}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <button role="button" class="btn btn-info" ng-click="showMatchsByTeam(team.id);" pe-translate="team.button.matchs">Matchs</button>
+    </div>
+</div>

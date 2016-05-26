@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html ng-app="TisseursDeChimeres.RDVBB.App">
+
+<head>
+    <meta charset="utf-8" />
+    <title>RDVBB Manager</title>
+    <meta http-equiv="Cache-Control" content="private, max-age=120, no-cache" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+
+    <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="lib/bootstrap/css/bootstrap-theme.css" rel="stylesheet" />
+
+    <link href="css/default.css" rel="stylesheet" />
+
+    <!--Optionnel Cordova-->
+    <!--<script src="cordova.js" onload="javascript:window.isCordovaApp = true;"></script>-->
+
+    <!-- JQuery -->
+    <script src="lib/jquery/jquery-2.2.3.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="lib/bootstrap/js/bootstrap.js"></script>
+
+    <!-- AngularJS -->
+    <script src="lib/angularjs/angular.js"></script>
+    <script src="lib/angularjs/angular-route.js"></script>
+    <script src="lib/angularjs/angular-animate.js"></script>
+    <!--  -->
+    <script src="lib/angularjs/angu-fixed-header-table.js"></script>
+
+    <!-- RDVBB application references -->
+    <script src="scripts/directives.translation.js"></script>
+    <script src="scripts/services.ws.js"></script>
+    <script src="scripts/services.parameters.js"></script>
+    <script src="scripts/controllers.js"></script>
+    <script src="partials/controllers.js"></script>
+    <script src="partials/coachesRankingsController.js"></script>
+    <script src="partials/teamsRankingsContoller.js"></script>
+    <script src="scripts/app.js"></script>
+</head>
+
+<body>
+    <header ng-controller="menu as ctr" ng-init="init();" class="container-fluid">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="menu">
+            <div class="container-fluid" ng-cloak>
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="navbar-brand clickable" ng-click="showHome();">
+                        <p class="label label-info" style="font-size: 100%;"><span pe-translate="title.edition">Edition:</span>&nbsp;{{ currentEdition.edition() + ' / ' + currentEdition.year()}}</p>&nbsp;
+                        <p class="label label-info" style="font-size: 100%;" pe-translate="code">??</p>
+                    </div>
+                </div>
+                <!-- Bare de menu-->
+                <div class="collapse navbar-collapse" id="bs-navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <!-- Menu coach : liste des coachs inscrit et du classement par coachs -->
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span pe-translate="title.menu.coachs">Coachs</span>&nbsp;<span class="caret" /></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li ng-class="{'active' : isActive('/coaches')}"><a ng-click="showCoaches();" pe-translate="title.menu.coachs.list">Liste</a></li>
+                                <li class="divider"></li>
+                                <li ng-class="{'active' : isActive('/rankings/coaches/' + value)}" ng-repeat="value in currentEdition.coachRankings()"><a ng-click="showCoachesRankings(value);">{{'title.menu.ranking.' + value | peTranslate}}</a></li>
+                            </ul>
+                        </li>
+                        <!-- Menu equipe : liste  des équipes de coachs incscrites et du classement par équipe -->
+                        <li class="dropdown" ng-show="currentEdition.hasTeam()"><!-- visible si tournois par équipes -->
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span pe-translate="title.menu.teams">Equipes</span>&nbsp;<span class="caret" /></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li ng-class="{'active' : isActive('/teams')}" ng-show="currentEdition.hasTeam()"><a ng-click="showTeams()" pe-translate="title.menu.teams">Liste</a></li>
+                                <li class="divider"></li>
+                                <li ng-class="{'active' : isActive('/rankings/teams/' + value)}" ng-repeat="value in currentEdition.teamRankings()"><a ng-click="showTeamsRankings(value);">{{'title.menu.ranking.' + value | peTranslate}}</a></li>
+                            </ul>
+                        </li>
+                        <!-- Menu match : liste des matchs joués et à jouer -->
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span pe-translate="title.menu.matchs">Matchs</span>&nbsp;<span class="caret" /></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li ng-class="{'active' : isActive('/matchs/all/1')}"><a ng-click="showMatchs(1);" pe-translate="title.menu.all">Tous</a></li>
+                                <li ng-class="{'active' : isActive('/matchs/all/2')}"><a ng-click="showMatchs(2);" pe-translate="title.menu.played">Joués</a></li>
+                                <li ng-class="{'active' : isActive('/matchs/all/3')}"><a ng-click="showMatchs(3);" pe-translate="title.menu.toplay">A jouer</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- Menu paramétrage -->
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-calendar" /><span class="caret" /></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li ng-repeat="value in editions.toArray()" ng-class="{'active' : value.id == currentEdition.edition() }">
+                                    <a ng-click="changeCurrentEdition(value.id);"><span pe-translate="title.menu.edition.choice">Edition :</span>&nbsp;{{value.id  + ' / ' + value.year}}</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-globe"></span><span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li ng-class="{'active' : codeLanguage == 'fr-fr'}"><a ng-click="changeLanguage('fr-fr');"><span pe-translate="title.menu.language.french">Francais</span></a></li>
+                                <li ng-class="{'active' : codeLanguage == 'en-us'}"><a ng-click="changeLanguage('en-us');"><span pe-translate="title.menu.language.english">Englais</span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+    </header>
+    <section class="container-fluid" ng-cloak>
+        <div class="page {{ pageClass }}" ng-view></div>
+    </section>
+</body>
+
+</html>

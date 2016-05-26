@@ -1,0 +1,68 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2 class="panel-title"><span pe-translate="coach.title">COACH :</span>&nbsp;<strong>{{coatch.name}}</strong></h2>
+    </div>
+    <div class="panel-body">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <div class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <h5><span pe-translate="coach.infos">Infos</span></h5>
+                        </a>
+                    </div>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6" ng-show="currentEdition.hasTeam()">
+                                <a ng-click="showTeam(coatch.coachTeamId);">
+                                    <h4><span pe-translate="coach.team">TRIPLETTE :</span>&nbsp;<strong>{{coatch.coachTeamName}}</strong></h4>
+                                </a>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <h4><span pe-translate="coach.naf">NAF N°:</span>&nbsp;<strong>{{coatch.nafNumber}}</strong></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                    <div class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <h5><span pe-translate="coach.name">Nom de l'equipe :</span>&nbsp;<strong>{{coatch.teamName}}</strong></h5>
+                        </a>
+                    </div>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+                        <div class="container-fluid">
+                            <div class="row well well-sm">
+                                <div class="col-xs-6 col-sm-6 col-md-6" pe-translate="coach.race">race :</div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">{{coatch.raceName}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-8 col-sm-4 col-md-2" pe-translate="coach.ff">supporters</div>
+                                <div class="col-xs-4 col-sm-2 col-md-1"><strong>{{coatch.ff}}</strong></div>
+                                <div class="col-xs-8 col-sm-4 col-md-2" pe-translate="coach.cheerleaders">pom pom girl</div>
+                                <div class="col-xs-4 col-sm-2 col-md-1"><strong>{{coatch.cheerleaders}}</strong></div>
+                                <div class="col-xs-8 col-sm-4 col-md-2" pe-translate="coach.assistants">assistants</div>
+                                <div class="col-xs-4 col-sm-2 col-md-1"><strong>{{coatch.assistants}}</strong></div>
+                                <div class="col-xs-8 col-sm-4 col-md-2" pe-translate="coach.apothecary">apothicaire</div>
+                                <div class="col-xs-4 col-sm-2 col-md-1"><span class="label label-defaut">&nbsp;{{coatch.apothecary}}&nbsp;</span></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-8 col-sm-4 col-md-3" pe-translate="coach.reroll">relances</div>
+                                <div class="col-xs-4 col-sm-2 col-md-1"><span class="badge">{{coatch.reroll}}</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <button role="button" class="btn btn-info" ng-click="showMatchsByCoach(coatch.id);" pe-translate="coach.macths">Matchs</button>
+    </div>
+</div>

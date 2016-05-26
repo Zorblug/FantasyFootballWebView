@@ -1,0 +1,68 @@
+﻿<div class="panel panel-primary">
+    <div class="panel-heading"><h2 class="panel-title" pe-translate="matchs.title.{{filter}}">MATCHS</h2></div>
+    <div class="panel-body">
+        <ul class="nav nav-pills">
+            <li ng-repeat="item in ['Tous','1','2','3','4','5']" ng-class="{active: $index==round}" ng-click="setRound($index);"><a>{{item}}</a></li>
+        </ul>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-fixed-macth" fixed-header>
+            <thead>
+                <tr>
+                    <th class="text-center"><a ng-click="orderByField='round'; reverseSort = !reverseSort;"><span pe-translate="matchs.round">Tour</span>&nbsp;<span class="glyphicon" ng-show="orderByField=='round'" ng-class="{'glyphicon-arrow-down': reverseSort==true, 'glyphicon-arrow-up': reverseSort==false}"></span></a></th>
+                    <th class="text-center"><a ng-click="orderByField='table'; reverseSort = !reverseSort;"><span pe-translate="matchs.table">Table N°</span>&nbsp;<span class="glyphicon" ng-show="orderByField=='table'" ng-class="{'glyphicon-arrow-down': reverseSort==true, 'glyphicon-arrow-up': reverseSort==false}"></span></a></th>
+                    <th class="text-center" width="40%"><a ng-click="orderByField='coach1'; reverseSort = !reverseSort;"><span pe-translate="matchs.coachA">Coach A</span>&nbsp;<span class="glyphicon" ng-show="orderByField=='coach1'" ng-class="{'glyphicon-arrow-down': reverseSort==true, 'glyphicon-arrow-up': reverseSort==false}"></span></a></th>
+                    <th class="text-center" width="40%"><a ng-click="orderByField='coach2'; reverseSort = !reverseSort;"><span pe-translate="matchs.coachB">Coach B</span>&nbsp;<span class="glyphicon" ng-show="orderByField=='coach2'" ng-class="{'glyphicon-arrow-down': reverseSort==true, 'glyphicon-arrow-up': reverseSort==false}"></span></a></th>
+                    <th class="text-center"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="match in matchsList | orderBy : orderByField : reverseSort ">
+                    <td class="text-center">{{match.round}}</td>
+                    <td class="text-center">{{match.table}}</td>
+                    <td class="text-center"><a ng-click="showCoach(value.teamId1);"><strong>{{match.coach1}}</strong></a></td>
+                    <td class="text-center"><a ng-click="showCoach(value.teamId2);"><strong>{{match.coach2}}</strong></a></td>
+                    <td class="text-center">
+                        <!-- Button trigger modal-->
+                        <a ng-show="isFinished(match);" data-toggle="modal" data-target="#myModalMatch{{$index}}" title="Détail" pe-translate-title="matchs.title.detail">
+                            <span class=" glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                        </a>
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModalMatch{{$index}}" tabindex="-1" role="dialog" aria-labelledby="myModalMatchLabel{{$index}}">
+                            <div class="modal-dialog modal-sm" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h5><span pe-translate="matchsbycoach.round">TOUR :</span>{{match.round}}</h5>
+                                        <h4 class="modal-title" id="myModalMatchLabel{{$index}}">{{match.coach1}}&nbsp;vs&nbsp;{{match.coach2}}</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-condensed">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center" pe-translate="matchs.td">TD</th>
+                                                        <th class="text-center" pe-translate="matchs.points">POINT</th>
+                                                        <th class="text-center" pe-translate="matchs.casualties">SORTIES</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center">{{match.td1}}/{{match.td2}}</td>
+                                                        <td class="text-center">{{match.points1}}/{{match.points2}}</td>
+                                                        <td class="text-center">{{match.casualties1}}/{{match.casualties2}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
