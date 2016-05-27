@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="TisseursDeChimeres.RDVB.View.Ranking">
+<head>
+    <meta charset="utf-8" />
+    <title>View Rankings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+
+    <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="lib/bootstrap/css/bootstrap-theme.css" rel="stylesheet" />
+
+    <link href="css/view.css" rel="stylesheet" />
+
+    <!-- JQuery -->
+    <script src="lib/jquery/jquery-2.2.3.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="lib/bootstrap/js/bootstrap.js"></script>
+
+    <!-- AngularJS -->
+    <script src="lib/angularjs/angular.js"></script>
+    <script src="lib/angularjs/angular-route.js"></script>
+    <script src="lib/angularjs/angular-animate.js"></script>
+    <!--  -->
+    <script src="lib/angularjs/angu-fixed-header-table.js"></script>
+
+    <!-- Application -->
+    <script src="scripts/services.ws.js"></script>
+</head>
+<body>
+    <section>
+        <div class="page {{ pageClass }}" ng-view></div>
+    </section>
+</body>
+</html>

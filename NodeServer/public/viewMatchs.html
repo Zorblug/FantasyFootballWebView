@@ -2,34 +2,37 @@
 <html xmlns="http://www.w3.org/1999/xhtml" ng-app="TisseursDeChimeres.RDVB.View.Match">
 <head>
     <meta charset="utf-8" />
-    <title>RDVBBII.Windows.viewtitle</title>
+    <title>View Matchs</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
 
-    <link href="Content/bootstrap.css" rel="stylesheet" />
-    <link href="Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="lib/bootstrap/css/bootstrap-theme.css" rel="stylesheet" />
 
     <link href="css/view.css" rel="stylesheet" />
-        
+
     <!-- JQuery -->
-    <script src="scripts/jquery-2.1.4.js"></script>
+    <script src="lib/jquery/jquery-2.2.3.js"></script>
 
     <!-- Bootstrap -->
-    <script src="scripts/bootstrap.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.js"></script>
 
     <!-- AngularJS -->
-    <script src="scripts/angular.js"></script>
-    <script src="scripts/angular-animate.js"></script>
-    <script src="scripts/angular-table.js"></script>
+    <script src="lib/angularjs/angular.js"></script>
+    <script src="lib/angularjs/angular-route.js"></script>
+    <script src="lib/angularjs/angular-animate.js"></script>
+    <!--  -->
+    <script src="lib/angularjs/angu-fixed-header-table.js"></script>
 
-    <script src="scripts/view-matchs.js"></script>
-    <script src="scripts/services.js"></script>
+    <!-- Application-->
+    <script src="scripts/services.ws.js"></script>
+    <script src="viewMatchsController.js"></script>
 </head>
 <body>
     <section ng-controller="view-macth">
         <div class="panel panel-primary">
-            <div class="panel-heading"><h2 class="panel-title">MATCHS TOUR : {{round}}</h2></div>            
+            <div class="panel-heading"><h2 class="panel-title">MATCHS TOUR : {{round}}</h2></div>
             <div class="table-responsive">
                 <table class="table table-striped" at-table at-list="matchsList" at-paginated at-config="config">
                     <thead></thead>

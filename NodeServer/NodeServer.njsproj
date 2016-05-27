@@ -809,6 +809,7 @@
     <Compile Include="public\scripts\directives.translation.js" />
     <Compile Include="public\scripts\services.parameters.js" />
     <Compile Include="public\scripts\services.ws.js" />
+    <Compile Include="public\viewMatchsController.js" />
     <Compile Include="server.js" />
     <Content Include="package.json" />
     <Content Include="public\assets\favicon.png" />
@@ -848,6 +849,8 @@
     <Content Include="public\partials\teamsRankings.html" />
     <Content Include="public\strings\en-us.json" />
     <Content Include="public\strings\fr-fr.json" />
+    <Content Include="public\viewMatchs.html" />
+    <Content Include="public\viewRankings.html" />
     <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>

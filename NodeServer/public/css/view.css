@@ -1,0 +1,219 @@
+﻿/*#region Customize */
+.label-info {
+    background-color: #9577cd;
+}
+
+.panel-primary {
+    border-color: #9577cd;
+}
+
+    .panel-primary > .panel-heading {
+        background-color: #9577cd;
+        border-color: #9577cd;
+        background-image: -webkit-linear-gradient(top, #9577cd 0, #a57bf3 100%);
+        background-image: -o-linear-gradient(top, #9577cd 0, #a57bf3 100%);
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#9577cd), to(#a57bf3));
+        background-image: linear-gradient(to bottom, #9577cd, 0,#a57bf3, 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff9577cd', endColorstr='#ffa57bf3', GradientType=0);
+    }
+
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    color: #fff;
+    background-color: #9577cd;
+}
+
+
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+    background-color: #9577cd;
+    background-image: -webkit-linear-gradient(top, #9577cd 0, #a57bf3 100%);
+    background-image: -o-linear-gradient(top, #9577cd 0, #a57bf3 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#9577cd), to(#a57bf3));
+    background-image: linear-gradient(to bottom, #9577cd 0, #a57bf3 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff9577cd', endColorstr='#ffa57bf3', GradientType=0);
+}
+
+
+.btn-info {
+    background-color: #9577cd;
+    border-color: #9577cd;
+    background-image: -webkit-linear-gradient(top, #9577cd 0, #a57bf3 100%);
+    background-image: -o-linear-gradient(top, #9577cd 0, #a57bf3 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#9577cd), to(#a57bf3));
+    background-image: linear-gradient(to bottom, #9577cd 0, #a57bf3 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff9577cd', endColorstr='#ffa57bf3', GradientType=0);
+}
+
+    .btn-info:hover, .btn-info:focus, .btn-info.focus, .btn-info:active, .btn-info.active, .open > .dropdown-toggle.btn-info {
+        background-color: #36225c;
+        border-color: #36225c;
+    }
+
+.btn-primary {
+    background-color: #36225c;
+    border-color: #36225c;
+    background-image: -webkit-linear-gradient(top, #36225c 0, #c4abf2 100%);
+    background-image: -o-linear-gradient(top, #36225c 0, #c4abf2 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#36225c), to(#c4abf2));
+    background-image: linear-gradient(to bottom, #36225c 0, #c4abf2 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff36225c', endColorstr='#ffc4abf2', GradientType=0);
+}
+
+    .btn-primary:hover, .btn-primary:focus, .btn-primary.focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+        background-color: #36225c;
+        border-color: #36225c;
+    }
+
+.panel-primary > .panel-heading .badge {
+    color: #9577cd;
+}
+/*#endregion */
+
+/*#region Animation*/
+.page.ng-leave {
+    z-index: 9999;
+}
+
+.page.ng-enter {
+    z-index: 8888;
+}
+
+/* page specific animations ------------------------ */
+/* contact ---------------------- */
+.page-index.ng-leave {
+    -webkit-animation: slideOutLeft 0.5s both ease-in;
+    -moz-animation: slideOutLeft 0.5s both ease-in;
+    -o-animation: slideOutLeft 0.5s both ease-in;
+    animation: slideOutLeft 0.5s both ease-in;
+}
+
+.page-index.ng-enter {
+    -webkit-animation: slideInRight 0.5s both ease-in;
+    -moz-animation: slideInRight 0.5s both ease-in;
+    -o-animation: slideInRight 0.5s both ease-in;
+    animation: slideInRight 0.5s both ease-in;
+}
+
+.page-coach.ng-leave {
+    -webkit-animation: slideOutLeft 0.5s both ease-in;
+    -moz-animation: slideOutLeft 0.5s both ease-in;
+    -o-animation: slideOutLeft 0.5s both ease-in;
+    animation: slideOutLeft 0.5s both ease-in;
+}
+
+.page-coach.ng-enter {
+    -webkit-animation: slideInUp 0.5s both ease-in;
+    -moz-animation: slideInUp 0.5s both ease-in;
+    -o-animation: slideInUp 0.5s both ease-in;
+    animation: slideInUp 0.5s both ease-in;
+}
+
+.page-team.ng-leave {
+    -webkit-animation: slideOutLeft 0.5s both ease-in;
+    -moz-animation: slideOutLeft 0.5s both ease-in;
+    -o-animation: slideOutLeft 0.5s both ease-in;
+    animation: slideOutLeft 0.5s both ease-in;
+}
+
+.page-team.ng-enter {
+    -webkit-animation: slideInUp 0.5s both ease-in;
+    -moz-animation: slideInUp 0.5s both ease-in;
+    -o-animation: slideInUp 0.5s both ease-in;
+    animation: slideInUp 0.5s both ease-in;
+}
+
+.page-match.ng-leave {
+    -webkit-animation: slideOutLeft 0.5s both ease-in;
+    -moz-animation: slideOutLeft 0.5s both ease-in;
+    -o-animation: slideOutLeft 0.5s both ease-in;
+    animation: slideOutLeft 0.5s both ease-in;
+}
+
+.page-match.ng-enter {
+    -webkit-animation: slideInUp 0.5s both ease-in;
+    -moz-animation: slideInUp 0.5s both ease-in;
+    -o-animation: slideInUp 0.5s both ease-in;
+    animation: slideInUp 0.5s both ease-in;
+}
+
+
+@-moz-keyframes scaleUp {
+    from {
+        opacity: 0.3;
+        -moz-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+        -o-transform: scale(0.8);
+        -webkit-transform: scale(0.8);
+        transform: scale(0.8);
+    }
+}
+
+@-webkit-keyframes scaleUp {
+    from {
+        opacity: 0.3;
+        -moz-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+        -o-transform: scale(0.8);
+        -webkit-transform: scale(0.8);
+        transform: scale(0.8);
+    }
+}
+
+@keyframes scaleUp {
+    from {
+        opacity: 0.3;
+        -moz-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+        -o-transform: scale(0.8);
+        -webkit-transform: scale(0.8);
+        transform: scale(0.8);
+    }
+}
+
+
+@keyframes slideInRight {
+    from {
+        -moz-transform: translateX(100%);
+        -ms-transform: translateX(100%);
+        -o-transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+    }
+
+    to {
+        -moz-transform: translateX(0);
+        -ms-transform: translateX(0);
+        -o-transform: translateX(0);
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        -moz-transform: translateY(100%);
+        -ms-transform: translateY(100%);
+        -o-transform: translateY(100%);
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+
+    to {
+        -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        -o-transform: translateY(0);
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideOutLeft {
+    to {
+        -moz-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+        -o-transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+}
+/*#endregion */

@@ -3,12 +3,15 @@
 (function () {
     "use strict";
 
-    angular.module('TisseursDeChimeres.RDVBB.controllers', ['TisseursDeChimeres.RDVBB.services.ws', 'TisseursDeChimeres.RDVBB.services.parameters'])
+    angular.module('TisseursDeChimeres.RDVBB.controllers',
+        [   'TisseursDeChimeres.RDVBB.services.ws',
+            'TisseursDeChimeres.RDVBB.services.parameters'
+        ])
 
     //Controller de la page : index.html
     .controller('menu', ['$scope', '$rootScope', '$location', '$window', '$PARAM', '$TRANSLATE',
         function($scope, $rootScope, $location, $window, $PARAM, $TRANSLATE) {
-            
+
             //Chargement des traduction
             $TRANSLATE.wait().then(function() {
                 $scope.codeLanguage = $TRANSLATE.getLanguage();
@@ -20,9 +23,9 @@
             }).then(function(data) {
                 $scope.editions = data;
             }).catch(function(error){
-              console.log(error); // #TODO Gestion des erreurs a faire 
+              console.log(error); // #TODO Gestion des erreurs a faire
             });
-            
+
             //! Chagement de l'edition courrantes
             $scope.changeCurrentEdition = function(edition) {
                 $rootScope.currentEdition = $scope.editions.getByEdition(edition);
@@ -30,22 +33,22 @@
                 console.log(JSON.stringify($rootScope.currentEdition));
                 $location.path('/');
             };
-            
+
             //! Retour à la page d'accueil
             $scope.showHome = function() {
                 $location.path('/');
             };
-            
+
             //! Affiche la liste des coachs
             $scope.showCoaches = function() {
                 $location.path('/coaches');
             };
-            
+
             //! Affiche la liste des equipe de coachs
             $scope.showTeams = function() {
                 $location.path('/teams');
             };
-            
+
             //! Change la langue d'affichage
             $scope.changeLanguage = function(code) {
                 $TRANSLATE.setLanguage(code).then(function() {
