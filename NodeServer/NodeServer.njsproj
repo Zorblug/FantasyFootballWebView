@@ -810,6 +810,7 @@
     <Compile Include="public\scripts\services.parameters.js" />
     <Compile Include="public\scripts\services.ws.js" />
     <Compile Include="public\viewMatchsController.js" />
+    <Compile Include="public\viewRankingsController.js" />
     <Compile Include="server.js" />
     <Content Include="package.json" />
     <Content Include="public\assets\favicon.png" />
