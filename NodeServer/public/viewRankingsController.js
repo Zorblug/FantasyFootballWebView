@@ -95,7 +95,7 @@
         }])
 
         .controller('rankingByCoach', ['$scope', '$rootScope', '$filter', '$routeParams', '$interval', '$RDVBB_WS', 'ngTableParams',
-        function ($scope, $rootScope, $filter, $routeParams, $interval, $RDVBB_WS, ngTableParams) {
+            function ($scope, $rootScope, $filter, $routeParams, $interval, $RDVBB_WS, ngTableParams) {
 
             //function completData(data) {
             //    for (var i in data)
@@ -105,49 +105,49 @@
             //    return $filter('orderBy')(data, 'index', false);
             //}
 
-            function load() {
-                console.log("LOAD ...");
-                var edition = 12;
+                function load() {
+                    console.log("LOAD ...");
+                    var edition = 12;
 
-                $scope.pageClass = 'page-match';
+                    $scope.pageClass = 'page-match';
 
-                //$scope.config = {
-                //    itemsPerPage: 20,
-                //    fillLastPage: "yes",
-                //    currentPage: 0
-                //};
+                    //$scope.config = {
+                    //    itemsPerPage: 20,
+                    //    fillLastPage: "yes",
+                    //    currentPage: 0
+                    //};
 
-                switch ($scope.filter) {
-                    case '1':
-                        $scope.title = 'rankingByCoach.title.1';
-                        $RDVBB_WS.ranking.byCoach(edition).then(function (data) {
-                            //$scope.rankings = completData(data);
-                            $scope.rankings = data;
-                        });
-                        break;
-                    case '2':
-                        $scope.title = 'rankingByCoach.title.2';
-                        $RDVBB_WS.ranking.bestComeback(edition).then(function (data) {
-                            //$scope.rankings = completData(data);
-                            $scope.rankings = data;
-                        });
-                        break;
-                    case '3':
-                        $scope.title = 'rankingByCoach.title.3';
-                        $RDVBB_WS.ranking.topTD(edition).then(function (data) {
-                            //$scope.rankings = completData(data);
-                            $scope.rankings = data;
-                        });
-                        break;
-                    default:
-                        $scope.title = 'rankingByCoach.title.4';
-                        $RDVBB_WS.ranking.topCasualties(edition).then(function (data) {
-                            //$scope.rankings = completData(data);
-                            $scope.rankings = data;
-                        });
-                        break;
+                    switch ($scope.filter) {
+                        case '1':
+                            $scope.title = 'rankingByCoach.title.1';
+                            $RDVBB_WS.ranking.byCoach(edition).then(function (data) {
+                                //$scope.rankings = completData(data);
+                                $scope.rankings = data;
+                            });
+                            break;
+                        case '2':
+                            $scope.title = 'rankingByCoach.title.2';
+                            $RDVBB_WS.ranking.bestComeback(edition).then(function (data) {
+                                //$scope.rankings = completData(data);
+                                $scope.rankings = data;
+                            });
+                            break;
+                        case '3':
+                            $scope.title = 'rankingByCoach.title.3';
+                            $RDVBB_WS.ranking.topTD(edition).then(function (data) {
+                                //$scope.rankings = completData(data);
+                                $scope.rankings = data;
+                            });
+                            break;
+                        default:
+                            $scope.title = 'rankingByCoach.title.4';
+                            $RDVBB_WS.ranking.topCasualties(edition).then(function (data) {
+                                //$scope.rankings = completData(data);
+                                $scope.rankings = data;
+                            });
+                            break;
+                    };
                 };
-            }
 
             load();
 
@@ -190,17 +190,17 @@
         }])
 
         .controller('rankingByTeam', ['$scope', '$rootScope', '$routeParams', '$interval', '$RDVBB_WS', '$TRANSLATE',
-        function ($scope, $rootScope, $routeParams, $interval, $RDVBB_WS, $TRANSLATE) {
+            function ($scope, $rootScope, $routeParams, $interval, $RDVBB_WS, $TRANSLATE) {
 
-            $scope.pageClass = 'page-match';
+                $scope.pageClass = 'page-match';
 
-            function load() {
-                console.log("LOAD ...");
-                $RDVBB_WS.ranking.byTeams(12).then(function (data) {
-                    $scope.rankings = data;
-                });
-            }
+                function load() {
+                    console.log("LOAD ...");
+                    $RDVBB_WS.ranking.byTeams(12).then(function (data) {
+                        $scope.rankings = data;
+                    });
+                }
 
-            load();
-        }]);
+                load();
+            }]);
 })();

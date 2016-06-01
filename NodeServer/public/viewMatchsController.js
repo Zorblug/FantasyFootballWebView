@@ -4,17 +4,18 @@
     angular.module('TisseursDeChimeres.RDVB.View.Match',
         ['angular-table',
          'ngAnimate',
-         'TisseursDeChimeres.RDVBB.services.ws'])
+         'TisseursDeChimeres.RDVBB.services.ws',
+         'TisseursDeChimeres.RDVBB.services.parameters'])
     .config(function ($locationProvider) {
         $locationProvider.html5Mode(false);
     })
     .run(['$rootScope', function () {
         console.log("APPLICATION VIEW START");
     }])
-    .controller('view-macth', ['$scope','$rootScope', '$location', '$window', '$filter', '$interval', '$RDVBB_WS',
-        function ($scope, $rootScope, $location, $window, $filter, $interval, $RDVBB_WS) {
+    .controller('view-macth', ['$scope','$rootScope', '$location', '$window', '$filter', '$interval', '$RDVBB_WS','$PARAM',
+        function ($scope, $rootScope, $location, $window, $filter, $interval, $RDVBB_WS, $PARAM) {
             $scope.matchsList = [];
-            $scope.round = 1;
+            $scope.round = 5;
 
             var params = $location.search();
             if (params.round != null) {
@@ -22,18 +23,19 @@
             }
 
             $scope.config = {
-                itemsPerPage: 20,
+                itemsPerPage: 19,
                 fillLastPage: "yes",
                 currentPage: 0
             };
 
             function loadList() {
-                $RDVBB_WS.matchs.toPlay($rootScope.currentEdition.edition(), $scope.round).then(function (data) {
+
+                $RDVBB_WS.matchs.toPlay($scope.currentEdition.edition(), $scope.round).then(function (data) {
                     var sublist = [];
 
                     for (var i in data) {
-                        sublist.push({ "table": data[i].table, "coach": data[i].coach1 });
-                        sublist.push({ "table": data[i].table, "coach": data[i].coach2 });
+                        sublist.push({ "table": data[i].table, "coach": data[i].coach1, "vs": data[i].coach2 });
+                        sublist.push({ "table": data[i].table, "coach": data[i].coach2, "vs": data[i].coach1 });
                     }
 
                     sublist = $filter('orderBy')(sublist, 'coach', false);
@@ -46,7 +48,7 @@
             function load() {
                 var page = $scope.config.currentPage;
                 page = page + 1;
-                if (page > 1) {
+                if (page > 3) {
                     page = 0;
                 }
                 $scope.config.currentPage = page;
@@ -58,9 +60,14 @@
                 }
             }
 
-            loadList();
 
-            var stop = $interval(load, 5000);
+            $PARAM.editions.getCurrent().then(function (data) {
+                $scope.currentEdition = data;
+                loadList();
+            });
+            
+
+            var stop = $interval(load, 8000);
             $scope.stopFight = function () {
                 if (angular.isDefined(stop)) {
                     $interval.cancel(stop);

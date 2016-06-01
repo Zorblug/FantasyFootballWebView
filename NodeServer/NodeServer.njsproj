@@ -799,6 +799,8 @@
     <Compile Include="public\lib\angularjs\i18n\angular-locale_zh.js" />
     <Compile Include="public\lib\angularjs\i18n\angular-locale_zu-za.js" />
     <Compile Include="public\lib\angularjs\i18n\angular-locale_zu.js" />
+    <Compile Include="public\lib\angularTable\angular-table.js" />
+    <Compile Include="public\lib\angularTable\angular-table.min.js" />
     <Compile Include="public\lib\jquery\jquery-2.2.3.js" />
     <Compile Include="public\lib\jquery\jquery-2.2.3.min.js" />
     <Compile Include="public\partials\coachesRankingsController.js" />
@@ -862,6 +864,7 @@
     <Folder Include="public\lib\" />
     <Folder Include="public\lib\angularjs\" />
     <Folder Include="public\lib\angularjs\i18n\" />
+    <Folder Include="public\lib\angularTable\" />
     <Folder Include="public\lib\bootstrap\" />
     <Folder Include="public\lib\bootstrap\css\" />
     <Folder Include="public\lib\bootstrap\fonts\" />
