@@ -1,4 +1,6 @@
 /// <reference path="../lib/angularjs/angular.js" />
+/// <reference path="./services.ws.js" />
+/// <reference path="./services.parameters.js" />
 
 (function () {
     "use strict";

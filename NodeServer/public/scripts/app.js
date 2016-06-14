@@ -1,4 +1,10 @@
 /// <reference path="../lib/angularjs/angular.js" />
+/// <reference path="./services.ws.js" />
+/// <reference path="./services.parameters.js" />
+/// <reference path="./controllers.js" />
+/// <reference path="../partials/controllers.js" />
+/// <reference path="../partials/controllers.js" />
+
 
 (function() {
     "use strict";
