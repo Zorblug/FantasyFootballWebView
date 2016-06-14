@@ -1,4 +1,4 @@
-/// <reference path="lib/angularjs/angular.js" />
+/// <reference path="../lib/angularjs/angular.js" />
 
 (function () {
     "use strict";

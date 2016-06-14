@@ -1,4 +1,4 @@
-/// <reference path="lib/angularjs/angular.js" />
+/// <reference path="../lib/angularjs/angular.js" />
 
 (function () {
     "use strict";
@@ -19,7 +19,7 @@
             }).then(function (data) {
                 $rootScope.currentEdition = data;
                 console.log('TEAM :' + $rootScope.currentEdition.hasTeam());
-                return $PARAM.editions.list();// Chargement de la liste des éditions
+                return $PARAM.editions.list();// Chargement de la liste des ï¿½ditions
             }).then(function(data) {
                 $scope.editions = data;
             }).catch(function(error){
@@ -34,7 +34,7 @@
                 $location.path('/');
             };
 
-            //! Retour à la page d'accueil
+            //! Retour Ã  la page d'accueil
             $scope.showHome = function() {
                 $location.path('/');
             };
